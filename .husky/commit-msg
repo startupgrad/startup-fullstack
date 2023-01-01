@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+content=$(cat "${1}")
+message=`echo "${content}" | head -1`
+echo $(node -e "const message=\`${message}\`; console.log((message.charAt(0).toUpperCase() + message.slice(1)).replace(/\.+$/, ''))") > "$1"
