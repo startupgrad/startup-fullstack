@@ -10,7 +10,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path={routes.getAllIdeasRoute()} element={<AllIdeasPage />} />
-          <Route path={routes.getViewIdeaRoute({ ideaNick: ':ideaNick' })} element={<ViewIdeaPage />} />
+          <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
         </Routes>
       </BrowserRouter>
     </TrpcProvider>
