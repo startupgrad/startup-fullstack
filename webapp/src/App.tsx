@@ -1,3 +1,4 @@
+import { Layout } from './components/Layout'
 import * as routes from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
 import { AllIdeasPage } from './pages/AllIdeasPage'
@@ -9,8 +10,10 @@ export const App = () => {
     <TrpcProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={routes.getAllIdeasRoute()} element={<AllIdeasPage />} />
-          <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
+          <Route element={<Layout />}>
+            <Route path={routes.getAllIdeasRoute()} element={<AllIdeasPage />} />
+            <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </TrpcProvider>
