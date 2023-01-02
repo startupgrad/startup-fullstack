@@ -1,9 +1,10 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import * as routes from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
 import { AllIdeasPage } from './pages/AllIdeasPage'
 import { ViewIdeaPage } from './pages/ViewIdeaPage'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './styles/global.scss'
 
 export const App = () => {
   return (
