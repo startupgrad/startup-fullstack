@@ -37,11 +37,13 @@ importers:
       cors: ^2.8.5
       express: ^4.18.2
       lodash: ^4.17.21
+      zod: ^3.20.2
     dependencies:
       '@trpc/server': 10.7.0
       cors: 2.8.5
       express: 4.18.2
       lodash: 4.17.21
+      zod: 3.20.2
     devDependencies:
       '@types/cors': 2.8.13
       '@types/express': 4.17.15
@@ -5334,3 +5336,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+    dev: false
