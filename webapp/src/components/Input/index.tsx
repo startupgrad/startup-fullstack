@@ -14,6 +14,7 @@ export const Input: React.FC<{
       <label htmlFor={name}>{label}</label>
       <br />
       <input
+        disabled={formik.isSubmitting}
         type="text"
         onChange={(e) => formik.setFieldValue(name, e.target.value)}
         onBlur={() => formik.setFieldTouched(name)}

@@ -14,6 +14,7 @@ export const Textarea: React.FC<{
       <label htmlFor={name}>{label}</label>
       <br />
       <textarea
+        disabled={formik.isSubmitting}
         onChange={(e) => formik.setFieldValue(name, e.target.value)}
         onBlur={() => formik.setFieldTouched(name)}
         value={value}
