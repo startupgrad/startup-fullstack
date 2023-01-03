@@ -6,6 +6,7 @@ export const Input: React.FC<{
   formik: FormikProps<any>
 }> = ({ label, name, formik }) => {
   const value = formik.values[name]
+  const error = formik.errors[name] as string | undefined
 
   return (
     <div style={{ marginBottom: 10 }}>
@@ -18,6 +19,7 @@ export const Input: React.FC<{
         name={name}
         id={name}
       />
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   )
 }
