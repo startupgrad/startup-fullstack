@@ -1,5 +1,5 @@
+import { zCreateIdeaInput } from '@ideanick/backend/src/router/createIdea/input'
 import { useFormik } from 'formik'
-import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
@@ -15,17 +15,7 @@ export const NewIdeaPage = () => {
       description: '',
       text: '',
     },
-    validationSchema: toFormikValidationSchema(
-      z.object({
-        name: z.string().min(1),
-        nick: z
-          .string()
-          .min(1)
-          .regex(/^[a-z0-9-]+$/, 'Nick may contain only lowercase letters, numbers and dashes'),
-        description: z.string().min(1),
-        text: z.string().min(100, 'Text should be at least 100 characters long'),
-      })
-    ),
+    validationSchema: toFormikValidationSchema(zCreateIdeaInput),
     onSubmit: async (values) => {
       return await createIdea.mutateAsync(values)
     },
