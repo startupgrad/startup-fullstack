@@ -1,9 +1,9 @@
-import { Input } from '../../components/Input'
-import { Segment } from '../../components/Segment'
-import { Textarea } from '../../components/Textarea'
 import { useFormik } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+import { Input } from '../../components/Input'
+import { Segment } from '../../components/Segment'
+import { Textarea } from '../../components/Textarea'
 
 export const NewIdeaPage = () => {
   const formik = useFormik({
