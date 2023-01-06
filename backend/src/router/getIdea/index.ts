@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { ideas } from '../../lib/ideas'
 import { trpc } from '../../lib/trpc'
 
 export const getIdea = trpc.procedure
@@ -8,6 +7,12 @@ export const getIdea = trpc.procedure
       ideaNick: z.string(),
     })
   )
-  .query(({ input }) => {
-    return { idea: ideas.find((idea) => idea.nick === input.ideaNick) || null }
+  .query(async ({ ctx, input }) => {
+    const idea = await ctx.prisma.idea.findUnique({
+      where: {
+        nick: input.ideaNick,
+      },
+    })
+
+    return { idea }
   })
