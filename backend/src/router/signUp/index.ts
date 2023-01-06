@@ -1,6 +1,6 @@
+import crypto from 'crypto'
 import { trpc } from '../../lib/trpc'
 import { zSignUpInput } from './input'
-import crypto from 'crypto'
 
 export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, input }) => {
   const exUser = await ctx.prisma.user.findUnique({

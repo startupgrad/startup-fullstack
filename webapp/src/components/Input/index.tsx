@@ -7,7 +7,8 @@ export const Input: React.FC<{
   name: string
   formik: FormikProps<any>
   maxWidth?: number
-}> = ({ label, name, formik, maxWidth }) => {
+  type?: 'text' | 'password'
+}> = ({ label, name, formik, maxWidth, type = 'text' }) => {
   const value = formik.values[name]
   const error = formik.errors[name] as string | undefined
   const touched = formik.touched[name] as boolean
@@ -23,7 +24,7 @@ export const Input: React.FC<{
         className={cn({ [css.input]: true, [css.invalid]: invalid })}
         style={{ maxWidth }}
         disabled={disabled}
-        type="text"
+        type={type}
         onChange={(e) => formik.setFieldValue(name, e.target.value)}
         onBlur={() => formik.setFieldTouched(name)}
         value={value}
