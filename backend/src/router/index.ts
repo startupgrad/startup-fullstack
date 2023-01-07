@@ -3,6 +3,7 @@ import { trpc } from '../lib/trpc'
 import { createIdea } from './createIdea'
 import { getIdea } from './getIdea'
 import { getIdeas } from './getIdeas'
+import { signIn } from './signIn'
 import { signUp } from './signUp'
 // @endindex
 
@@ -11,6 +12,7 @@ export const trpcRouter = trpc.router({
   createIdea,
   getIdea,
   getIdeas,
+  signIn,
   signUp,
   // @endindex
 })

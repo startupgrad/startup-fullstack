@@ -1,5 +1,6 @@
 import crypto from 'crypto'
 import { trpc } from '../../lib/trpc'
+import { getPasswordHash } from '../../utils/getPasswordHash'
 import { zSignUpInput } from './input'
 
 export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, input }) => {
@@ -14,7 +15,7 @@ export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, 
   await ctx.prisma.user.create({
     data: {
       nick: input.nick,
-      password: crypto.createHash('sha256').update(input.password).digest('hex'),
+      password: getPasswordHash(input.password),
     },
   })
   return true
