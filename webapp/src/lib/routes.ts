@@ -6,6 +6,8 @@ export const getSignUpRoute = () => '/sign-up'
 
 export const getSignInRoute = () => '/sign-in'
 
+export const getSignOutRoute = () => '/sign-out'
+
 export const getAllIdeasRoute = () => '/'
 
 export const viewIdeaRouteParams = getRouteParams({ ideaNick: true })
