@@ -1,4 +1,3 @@
-import crypto from 'crypto'
 import { trpc } from '../../lib/trpc'
 import { getPasswordHash } from '../../utils/getPasswordHash'
 import { zSignUpInput } from './input'

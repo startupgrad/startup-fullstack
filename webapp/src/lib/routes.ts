@@ -4,6 +4,8 @@ const getRouteParams = <T extends Record<string, boolean>>(object: T) => {
 
 export const getSignUpRoute = () => '/sign-up'
 
+export const getSignInRoute = () => '/sign-in'
+
 export const getAllIdeasRoute = () => '/'
 
 export const viewIdeaRouteParams = getRouteParams({ ideaNick: true })
