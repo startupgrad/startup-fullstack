@@ -2,6 +2,10 @@ import cn from 'classnames'
 import React from 'react'
 import css from './styles.module.scss'
 
-export const Alert: React.FC<{ color: 'red' | 'green'; children: React.ReactNode }> = ({ color, children }) => {
+export type AlertProps = { color: 'red' | 'green'; hidden?: boolean; children: React.ReactNode }
+export const Alert: React.FC<AlertProps> = ({ color, hidden, children }) => {
+  if (hidden) {
+    return null
+  }
   return <div className={cn({ [css.alert]: true, [css[color]]: true })}>{children}</div>
 }
