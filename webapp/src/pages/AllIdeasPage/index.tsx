@@ -1,24 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Segment } from '../../components/Segment'
+import { withPageWrapper } from '../../lib/pageWrapper'
 import { getViewIdeaRoute } from '../../lib/routes'
 import { trpc } from '../../lib/trpc'
 import css from './styles.module.scss'
 
-export const AllIdeasPage = () => {
-  const { data, error, isLoading, isFetching, isError } = trpc.getIdeas.useQuery()
-
-  if (isLoading || isFetching) {
-    return <span>Loading...</span>
-  }
-
-  if (isError) {
-    return <span>Error: {error.message}</span>
-  }
-
+export const AllIdeasPage = withPageWrapper({
+  useQuery: () => trpc.getIdeas.useQuery(),
+  setProps: ({ queryResult }) => ({ ideas: queryResult.data.ideas }),
+})(({ ideas }) => {
   return (
     <Segment title="All Ideas">
       <div className={css.ideas}>
-        {data.ideas.map((idea) => (
+        {ideas.map((idea) => (
           <div className={css.idea} key={idea.nick}>
             <Segment
               size={2}
@@ -34,4 +28,4 @@ export const AllIdeasPage = () => {
       </div>
     </Segment>
   )
-}
+})
