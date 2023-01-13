@@ -1,23 +1,23 @@
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 import { trpc } from '../lib/trpc'
 // @index('./**/index.ts', f => `import { ${f.path.split('/').slice(0, -1).pop()} } from '${f.path.split('/').slice(0, -1).join('/')}'`)
-import { createIdea } from './createIdea'
-import { getIdea } from './getIdea'
-import { getIdeas } from './getIdeas'
-import { getMe } from './getMe'
-import { signIn } from './signIn'
-import { signUp } from './signUp'
-import { updateIdea } from './updateIdea'
+import { getMe } from './auth/getMe'
+import { signIn } from './auth/signIn'
+import { signUp } from './auth/signUp'
+import { createIdea } from './ideas/createIdea'
+import { getIdea } from './ideas/getIdea'
+import { getIdeas } from './ideas/getIdeas'
+import { updateIdea } from './ideas/updateIdea'
 // @endindex
 
 export const trpcRouter = trpc.router({
   // @index('./**/index.ts', f => `${f.path.split('/').slice(0, -1).pop()},`)
-  createIdea,
-  getIdea,
-  getIdeas,
   getMe,
   signIn,
   signUp,
+  createIdea,
+  getIdea,
+  getIdeas,
   updateIdea,
   // @endindex
 })
