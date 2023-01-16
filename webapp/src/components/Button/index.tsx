@@ -6,8 +6,12 @@ import css from './styles.module.scss'
 export type ButtonProps = { loading?: boolean; children: React.ReactNode }
 export const Button: React.FC<ButtonProps> = ({ children, loading = false }) => {
   return (
-    <button className={cn({ [css.button]: true, [css.disabled]: loading })} type="submit" disabled={loading}>
-      {loading ? 'Submitting...' : children}
+    <button
+      className={cn({ [css.button]: true, [css.disabled]: loading, [css.loading]: loading })}
+      type="submit"
+      disabled={loading}
+    >
+      <span className={css.text}>{children}</span>
     </button>
   )
 }

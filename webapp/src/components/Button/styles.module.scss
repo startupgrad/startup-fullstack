@@ -24,4 +24,13 @@
     background-color: #929292;
     color: #d9d9d9;
   }
+
+  &.loading {
+    position: relative;
+    @include loader($borderWidth: 3px, $size: 20px, $color: $white);
+
+    .text {
+      opacity: 0;
+    }
+  }
 }
