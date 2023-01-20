@@ -3,6 +3,11 @@
 @import '../../node_modules/include-media/dist/include-media';
 
 @mixin link($color: $blue, $hoverColor: $red) {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
   color: $blue;
   transition: color 200ms ease;
 

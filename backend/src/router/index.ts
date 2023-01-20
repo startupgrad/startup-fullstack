@@ -9,6 +9,7 @@ import { updateProfile } from './auth/updateProfile'
 import { createIdea } from './ideas/createIdea'
 import { getIdea } from './ideas/getIdea'
 import { getIdeas } from './ideas/getIdeas'
+import { setIdeaLike } from './ideas/setIdeaLike'
 import { updateIdea } from './ideas/updateIdea'
 // @endindex
 
@@ -22,6 +23,7 @@ export const trpcRouter = trpc.router({
   createIdea,
   getIdea,
   getIdeas,
+  setIdeaLike,
   updateIdea,
   // @endindex
 })
