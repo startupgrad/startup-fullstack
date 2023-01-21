@@ -36,6 +36,9 @@ export const getIdea = trpc.procedure
         },
       },
     })
+    if (rawIdea?.blockedAt) {
+      throw new Error('Idea is blocked by administrator')
+    }
     const isLikedByMe = !!rawIdea?.likes.length
     const likesCount = rawIdea?._count.likes || 0
     const idea = rawIdea && { ..._.omit(rawIdea, ['likes', '_count']), isLikedByMe, likesCount }

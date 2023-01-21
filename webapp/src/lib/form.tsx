@@ -5,7 +5,9 @@ import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { AlertProps } from '../components/Alert'
 import { ButtonProps } from '../components/Button'
 
-export const useForm = <TZodSchema extends z.ZodTypeAny>({
+type ValuesType<TMaybeZodSchema> = TMaybeZodSchema extends z.ZodTypeAny ? z.infer<TMaybeZodSchema> : {}
+
+export const useForm = <TMaybeZodSchema extends z.ZodTypeAny | undefined = undefined>({
   successMessage = false,
   resetOnSuccess = true,
   showValidationAlert = false,
@@ -16,14 +18,17 @@ export const useForm = <TZodSchema extends z.ZodTypeAny>({
   successMessage?: string | false
   resetOnSuccess?: boolean
   showValidationAlert?: boolean
-  initialValues: z.infer<TZodSchema>
-  validationSchema?: TZodSchema
-  onSubmit?: (values: z.infer<TZodSchema>, actions: FormikHelpers<z.infer<TZodSchema>>) => Promise<any> | any
+  initialValues?: ValuesType<TMaybeZodSchema>
+  validationSchema?: TMaybeZodSchema
+  onSubmit?: (
+    values: ValuesType<TMaybeZodSchema>,
+    actions: FormikHelpers<ValuesType<TMaybeZodSchema>>
+  ) => Promise<any> | any
 }) => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false)
   const [submittingError, setSubmittingError] = useState<Error | null>(null)
 
-  const formik = useFormik<z.infer<TZodSchema>>({
+  const formik = useFormik<ValuesType<TMaybeZodSchema>>({
     initialValues: initialValues || ({} as any),
     ...(validationSchema && { validationSchema: toFormikValidationSchema(validationSchema) }),
     onSubmit: async (values, formikHelpers) => {

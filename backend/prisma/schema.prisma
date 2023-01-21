@@ -9,13 +9,19 @@ datasource db {
 }
 
 model User {
-  id         String     @id @default(uuid())
-  nick       String     @unique
-  name       String     @default("")
-  password   String
-  createdAt  DateTime   @default(now())
-  ideas      Idea[]
-  ideaslikes IdeaLike[]
+  id          String           @id @default(uuid())
+  nick        String           @unique
+  name        String           @default("")
+  password    String
+  createdAt   DateTime         @default(now())
+  ideas       Idea[]
+  ideaslikes  IdeaLike[]
+  permissions UserPermission[]
+}
+
+enum UserPermission {
+  BLOCK_IDEAS
+  ALL
 }
 
 model Idea {
@@ -28,6 +34,7 @@ model Idea {
   author      User       @relation(fields: [authorId], references: [id])
   authorId    String
   likes       IdeaLike[]
+  blockedAt   DateTime?
 }
 
 model IdeaLike {
