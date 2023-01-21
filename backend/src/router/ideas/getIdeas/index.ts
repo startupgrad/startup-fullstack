@@ -16,6 +16,27 @@ export const getIdeas = trpc.procedure.input(zGetIdeasInput).query(async ({ ctx,
         },
       },
     },
+    where: !input.search
+      ? undefined
+      : {
+          OR: [
+            {
+              name: {
+                search: input.search,
+              },
+            },
+            {
+              description: {
+                search: input.search,
+              },
+            },
+            {
+              text: {
+                search: input.search,
+              },
+            },
+          ],
+        },
     orderBy: {
       createdAt: 'desc',
     },

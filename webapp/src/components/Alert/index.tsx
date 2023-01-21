@@ -2,7 +2,7 @@ import cn from 'classnames'
 import React from 'react'
 import css from './styles.module.scss'
 
-export type AlertProps = { color: 'red' | 'green'; hidden?: boolean; children: React.ReactNode }
+export type AlertProps = { color: 'red' | 'green' | 'brown'; hidden?: boolean; children: React.ReactNode }
 export const Alert: React.FC<AlertProps> = ({ color, hidden, children }) => {
   if (hidden) {
     return null

@@ -6,7 +6,7 @@ export const Input: React.FC<{
   label: string
   name: string
   formik: FormikProps<any>
-  maxWidth?: number
+  maxWidth?: number | string
   type?: 'text' | 'password'
 }> = ({ label, name, formik, maxWidth, type = 'text' }) => {
   const value = formik.values[name]
