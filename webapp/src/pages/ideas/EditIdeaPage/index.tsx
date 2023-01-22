@@ -14,6 +14,7 @@ import { EditIdeaRouteParams, getViewIdeaRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
 
 export const EditIdeaPage = withPageWrapper({
+  title: ({ queryResult }) => `Edit Idea "${queryResult.data.idea?.name}"`,
   authorizedOnly: true,
   useQuery: () => {
     const { ideaNick } = useParams() as EditIdeaRouteParams

@@ -67,6 +67,7 @@ const BlockIdea: React.FC<{ idea: NonNullable<TrpcRouterOutput['getIdea']['idea'
 }
 
 export const ViewIdeaPage = withPageWrapper({
+  title: ({ queryResult }) => queryResult.data.idea?.name,
   useQuery: () => {
     const { ideaNick } = useParams() as ViewIdeaRouteParams
     return trpc.getIdea.useQuery({

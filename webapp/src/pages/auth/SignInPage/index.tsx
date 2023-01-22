@@ -10,6 +10,7 @@ import { withPageWrapper } from '../../../lib/pageWrapper'
 import { trpc } from '../../../lib/trpc'
 
 export const SignInPage = withPageWrapper({
+  title: 'Sign In',
   redirectAuthorized: true,
 })(() => {
   const trpcUtils = trpc.useContext()
