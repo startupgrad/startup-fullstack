@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Alert } from '../../../components/Alert'
 import { LinkButton, Button } from '../../../components/Button'
 import { FormItems } from '../../../components/FormItems'
+import { Icon } from '../../../components/Icon'
 import { Segment } from '../../../components/Segment'
 import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
@@ -40,7 +41,7 @@ const LikeButton: React.FC<{ idea: NonNullable<TrpcRouterOutput['getIdea']['idea
         void setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe })
       }}
     >
-      {idea.isLikedByMe ? 'Unlike' : 'Like'}
+      <Icon size={32} className={css.likeIcon} name={idea.isLikedByMe ? 'likeFilled' : 'likeEmpty'} />
     </button>
   )
 }
