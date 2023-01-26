@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "ts-node-dev --rs --exit-child src/index.ts",
+    "dev": "ts-node-dev --watch src/emails/dist --rs --exit-child src/index.ts",
+    "build-emails": "rimraf ./src/emails/dist && mkdir ./src/emails/dist && mjml ./src/emails/[!_]*.mjml -o ./src/emails/dist",
+    "watch-emails": "mjml -w ./src/emails/[!_]*.mjml -o ./src/emails/dist",
     "build": "rimraf ./dist && tsc --build tsconfig.json",
     "start": "node dist/index.js",
     "pgc": "prisma generate",
@@ -32,6 +34,7 @@
     "@types/lodash": "^4.14.191",
     "@types/passport": "^1.0.11",
     "@types/passport-jwt": "^3.0.8",
+    "mjml": "^4.13.0",
     "prisma": "^4.8.0"
   }
 }
