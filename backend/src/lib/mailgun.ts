@@ -4,6 +4,13 @@ import Mailgun from 'mailgun.js'
 import { env } from './env'
 
 const getMailgunClient = _.memoize(() => {
+  if (!env.MAILGUN_API_KEY) {
+    return {
+      messages: {
+        create: async () => null,
+      },
+    }
+  }
   const mailgun = new Mailgun(formData)
   return mailgun.client({ username: 'api', key: env.MAILGUN_API_KEY, url: 'https://api.eu.mailgun.net' })
 })
