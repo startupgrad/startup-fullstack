@@ -5,6 +5,7 @@ import fg from 'fast-glob'
 import Handlebars from 'handlebars'
 import _ from 'lodash'
 import { env } from './env'
+import { sendEmailThroughMailgun } from './mailgun'
 
 const getHbrTemplates = _.memoize(() => {
   const htmlPathsPattern = path.resolve(__dirname, '../emails/dist/**/*.html')
@@ -22,7 +23,7 @@ const getEmailHtml = (templateName: string, templateVariables: Record<string, st
   return getHbrTemplates()[templateName](templateVariables)
 }
 
-const sendEmail = ({
+const sendEmail = async ({
   to,
   subject,
   templateName,
@@ -40,14 +41,14 @@ const sendEmail = ({
   const html = getEmailHtml(templateName, fullTemplateVaraibles)
   console.info('sendEmail', {
     to,
-    subject,
     templateName,
-    html,
+    templateVariables,
   })
+  return await sendEmailThroughMailgun({ to, html, subject })
 }
 
 export const sendWelcomeEmail = async ({ user }: { user: Pick<User, 'nick' | 'email'> }) => {
-  return sendEmail({
+  return await sendEmail({
     to: user.email,
     subject: 'Thanks For Registration!',
     templateName: 'welcome',
@@ -59,7 +60,7 @@ export const sendWelcomeEmail = async ({ user }: { user: Pick<User, 'nick' | 'em
 }
 
 export const sendIdeaBlockedEmail = async ({ user, idea }: { user: Pick<User, 'email'>; idea: Pick<Idea, 'nick'> }) => {
-  return sendEmail({
+  return await sendEmail({
     to: user.email,
     subject: 'Your Idea Blocked!',
     templateName: 'idea-blocked',
