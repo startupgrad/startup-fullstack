@@ -38,6 +38,7 @@ importers:
 
   backend:
     specifiers:
+      '@ideanick/shared': workspace:*
       '@ideanick/webapp': workspace:*
       '@prisma/client': ^4.8.0
       '@trpc/server': ^10.7.0
@@ -64,6 +65,7 @@ importers:
       prisma: ^4.8.0
       zod: ^3.20.2
     dependencies:
+      '@ideanick/shared': link:../shared
       '@ideanick/webapp': link:../webapp
       '@prisma/client': 4.8.0_prisma@4.8.0
       '@trpc/server': 10.7.0
@@ -91,9 +93,19 @@ importers:
       mjml: 4.13.0
       prisma: 4.8.0
 
+  shared:
+    specifiers:
+      '@types/node': ^18.11.18
+      zod: ^3.20.2
+    dependencies:
+      zod: 3.20.2
+    devDependencies:
+      '@types/node': 18.11.18
+
   webapp:
     specifiers:
       '@ideanick/backend': workspace:*
+      '@ideanick/shared': workspace:*
       '@tanstack/react-query': ^4.20.4
       '@trpc/client': ^10.7.0
       '@trpc/react-query': ^10.7.0
@@ -127,6 +139,7 @@ importers:
       zod-formik-adapter: ^1.2.0
     dependencies:
       '@ideanick/backend': link:../backend
+      '@ideanick/shared': link:../shared
       '@tanstack/react-query': 4.20.9_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.7.0_@trpc+server@10.7.0
       '@trpc/react-query': 10.7.0_voi52uzzn4btzulk52fuvwecw4

@@ -1,6 +1,7 @@
+import { zStringRequired } from '@ideanick/shared/src/zod'
 import { z } from 'zod'
 
 export const zSetIdeaLikeIdeaInput = z.object({
-  ideaId: z.string().min(1),
+  ideaId: zStringRequired,
   isLikedByMe: z.boolean(),
 })

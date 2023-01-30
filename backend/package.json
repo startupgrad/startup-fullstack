@@ -18,6 +18,7 @@
     "prepare": "pnpm pgc && ts-patch install -s"
   },
   "dependencies": {
+    "@ideanick/shared": "workspace:*",
     "@ideanick/webapp": "workspace:*",
     "@prisma/client": "^4.8.0",
     "@trpc/server": "^10.7.0",

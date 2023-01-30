@@ -1,6 +1,7 @@
+import { zStringRequired } from '@ideanick/shared/src/zod'
 import { z } from 'zod'
 
 export const zUpdatePasswordInput = z.object({
-  oldPassword: z.string().min(1),
-  newPassword: z.string().min(1),
+  oldPassword: zStringRequired,
+  newPassword: zStringRequired,
 })
