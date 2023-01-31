@@ -1,4 +1,5 @@
 import { sendWelcomeEmail } from '../../../lib/emails'
+import { logger } from '../../../lib/logger'
 import { trpc } from '../../../lib/trpc'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
 import { signJWT } from '../../../utils/signJWT'
@@ -28,7 +29,7 @@ export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, 
       password: getPasswordHash(input.password),
     },
   })
-  void sendWelcomeEmail({ user }).catch(console.error)
+  void sendWelcomeEmail({ user }).catch((error) => logger.error(error))
   const token = signJWT(user.id)
   return { token }
 })

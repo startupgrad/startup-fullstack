@@ -6,6 +6,7 @@ import fg from 'fast-glob'
 import Handlebars from 'handlebars'
 import _ from 'lodash'
 import { env } from './env'
+import { logger } from './logger'
 import { sendEmailThroughMailgun } from './mailgun'
 
 const getHbrTemplates = _.memoize(() => {
@@ -40,7 +41,7 @@ const sendEmail = async ({
     homeUrl: env.WEBAPP_URL,
   }
   const html = getEmailHtml(templateName, fullTemplateVaraibles)
-  console.info('sendEmail', {
+  logger.info('sendEmail', {
     to,
     templateName,
     templateVariables,

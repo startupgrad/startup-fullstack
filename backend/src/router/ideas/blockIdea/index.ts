@@ -1,4 +1,5 @@
 import { sendIdeaBlockedEmail } from '../../../lib/emails'
+import { logger } from '../../../lib/logger'
 import { trpc } from '../../../lib/trpc'
 import { canBlockIdeas } from '../../../utils/can'
 import { zBlockIdeaInput } from './input'
@@ -27,6 +28,6 @@ export const blockIdea = trpc.procedure.input(zBlockIdeaInput).mutation(async ({
       blockedAt: new Date(),
     },
   })
-  void sendIdeaBlockedEmail({ user: idea.author, idea }).catch(console.error)
+  void sendIdeaBlockedEmail({ user: idea.author, idea }).catch((error) => logger.error(error))
   return true
 })
