@@ -6,6 +6,7 @@ import { serializeError } from 'serialize-error'
 import { MESSAGE } from 'triple-beam'
 import winston from 'winston'
 import * as yaml from 'yaml'
+import { hideSensetiveData } from '../utils/hideSensetiveData'
 import { env } from './env'
 
 const winstonLogger = winston.createLogger({
@@ -64,7 +65,7 @@ export const logger = {
     if (!debug.enabled(`ideanick:${logType}`)) {
       return
     }
-    winstonLogger.info(message, { logType, ...meta })
+    winstonLogger.info(message, { logType, ...hideSensetiveData(meta) })
   },
   error: (logType: string, error: any, meta?: Record<string, any>) => {
     if (!debug.enabled(`ideanick:${logType}`)) {
@@ -75,7 +76,7 @@ export const logger = {
       logType,
       error,
       errorStack: serializedError.stack,
-      ...meta,
+      ...hideSensetiveData(meta),
     })
   },
 }
