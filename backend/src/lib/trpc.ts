@@ -2,8 +2,10 @@ import { User } from '@prisma/client'
 import { inferAsyncReturnType, initTRPC } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { Express } from 'express'
+import _ from 'lodash'
 import type { TrpcRouter } from '../router'
 import { AppContext } from './ctx'
+import { ExpectedError } from './error'
 import { logger } from './logger'
 
 const getCreateTrpcContext =
@@ -15,7 +17,17 @@ const getCreateTrpcContext =
 
 type TrpcContext = inferAsyncReturnType<ReturnType<typeof getCreateTrpcContext>>
 
-const trpc = initTRPC.context<TrpcContext>().create()
+const trpc = initTRPC.context<TrpcContext>().create({
+  errorFormatter: ({ shape, error }) => {
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        type: error.cause instanceof ExpectedError ? error.cause.type : ('UnexpectedError' as const),
+      },
+    }
+  },
+})
 
 export const createTrpcRouter = trpc.router
 

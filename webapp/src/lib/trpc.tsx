@@ -18,10 +18,12 @@ const customTrpcLink: TRPCLink<TrpcRouter> = () => {
           observer.next(value)
         },
         error(error) {
-          if (env.NODE_ENV !== 'development') {
-            console.error(error)
+          if (error.data?.type !== 'ExpectedError') {
+            if (env.NODE_ENV !== 'development') {
+              console.error(error)
+            }
+            sentryCaptureException(error)
           }
-          sentryCaptureException(error)
           observer.error(error)
         },
         complete() {

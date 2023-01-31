@@ -1,4 +1,5 @@
 import { sendWelcomeEmail } from '../../../lib/emails'
+import { ExpectedError } from '../../../lib/error'
 import { logger } from '../../../lib/logger'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
@@ -12,7 +13,7 @@ export const signUp = trpcLoggedProcedure.input(zSignUpInput).mutation(async ({ 
     },
   })
   if (exUserWithNick) {
-    throw new Error('User with this nick already exists')
+    throw new ExpectedError('User with this nick already exists')
   }
   const exUserWithEmail = await ctx.prisma.user.findUnique({
     where: {
@@ -20,7 +21,7 @@ export const signUp = trpcLoggedProcedure.input(zSignUpInput).mutation(async ({ 
     },
   })
   if (exUserWithEmail) {
-    throw new Error('User with this email already exists')
+    throw new ExpectedError('User with this email already exists')
   }
   const user = await ctx.prisma.user.create({
     data: {

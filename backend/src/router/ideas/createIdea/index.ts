@@ -1,3 +1,4 @@
+import { ExpectedError } from '../../../lib/error'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { zCreateIdeaInput } from './input'
 
@@ -11,7 +12,7 @@ export const createIdea = trpcLoggedProcedure.input(zCreateIdeaInput).mutation(a
     },
   })
   if (exIdea) {
-    throw new Error('Idea with this nick already exists')
+    throw new ExpectedError('Idea with this nick already exists')
   }
   await ctx.prisma.idea.create({
     data: {

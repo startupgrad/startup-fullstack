@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import { z } from 'zod'
+import { ExpectedError } from '../../../lib/error'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 
 export const getIdea = trpcLoggedProcedure
@@ -37,7 +38,7 @@ export const getIdea = trpcLoggedProcedure
       },
     })
     if (rawIdea?.blockedAt) {
-      throw new Error('Idea is blocked by administrator')
+      throw new ExpectedError('Idea is blocked by administrator')
     }
     const isLikedByMe = !!rawIdea?.likes.length
     const likesCount = rawIdea?._count.likes || 0
