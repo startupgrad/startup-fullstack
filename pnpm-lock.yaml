@@ -49,6 +49,7 @@ importers:
       '@types/lodash': ^4.14.191
       '@types/passport': ^1.0.11
       '@types/passport-jwt': ^3.0.8
+      '@types/triple-beam': ^1.3.2
       cors: ^2.8.5
       cron: ^2.2.0
       dotenv: ^16.0.3
@@ -62,9 +63,12 @@ importers:
       mjml: ^4.13.0
       passport: ^0.6.0
       passport-jwt: ^4.0.1
+      picocolors: ^1.0.0
       prisma: ^4.8.0
       serialize-error: ^8.1.0
+      triple-beam: ^1.3.0
       winston: ^3.8.2
+      yaml: ^2.2.1
       zod: ^3.20.2
     dependencies:
       '@ideanick/shared': link:../shared
@@ -83,8 +87,11 @@ importers:
       mailgun.js: 8.0.6
       passport: 0.6.0
       passport-jwt: 4.0.1
+      picocolors: 1.0.0
       serialize-error: 8.1.0
+      triple-beam: 1.3.0
       winston: 3.8.2
+      yaml: 2.2.1
       zod: 3.20.2
     devDependencies:
       '@types/cors': 2.8.13
@@ -94,6 +101,7 @@ importers:
       '@types/lodash': 4.14.191
       '@types/passport': 1.0.11
       '@types/passport-jwt': 3.0.8
+      '@types/triple-beam': 1.3.2
       mjml: 4.13.0
       prisma: 4.8.0
 
@@ -2287,6 +2295,10 @@ packages:
 
   /@types/strip-json-comments/0.0.30:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
+    dev: true
+
+  /@types/triple-beam/1.3.2:
+    resolution: {integrity: sha512-txGIh+0eDFzKGC25zORnswy+br1Ha7hj5cMVwKIU7+s0U2AxxJru/jZSMU6OC9MJWP6+pc/hc6ZjyZShpsyY2g==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.48.1_3jon24igvnqaqexgwtxk6nkpse:
@@ -5982,7 +5994,6 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-    dev: true
 
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -7542,7 +7553,6 @@ packages:
   /yaml/2.2.1:
     resolution: {integrity: sha512-e0WHiYql7+9wr4cWMx3TVQrNwejKaEe7/rHNmQmqRjazfOP5W8PB6Jpebb5o6fIapbz9o9+2ipcaTM2ZwDI6lw==}
     engines: {node: '>= 14'}
-    dev: true
 
   /yargs-parser/20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
