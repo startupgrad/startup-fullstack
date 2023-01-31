@@ -29,7 +29,7 @@ export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, 
       password: getPasswordHash(input.password),
     },
   })
-  void sendWelcomeEmail({ user }).catch((error) => logger.error(error))
+  void sendWelcomeEmail({ user }).catch((error) => logger.error('email', error))
   const token = signJWT(user.id)
   return { token }
 })

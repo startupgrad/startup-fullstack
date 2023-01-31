@@ -41,7 +41,7 @@ const sendEmail = async ({
     homeUrl: env.WEBAPP_URL,
   }
   const html = getEmailHtml(templateName, fullTemplateVaraibles)
-  logger.info('sendEmail', {
+  logger.info('email', 'Sending email', {
     to,
     templateName,
     templateVariables,

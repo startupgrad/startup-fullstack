@@ -28,6 +28,6 @@ export const blockIdea = trpc.procedure.input(zBlockIdeaInput).mutation(async ({
       blockedAt: new Date(),
     },
   })
-  void sendIdeaBlockedEmail({ user: idea.author, idea }).catch((error) => logger.error(error))
+  void sendIdeaBlockedEmail({ user: idea.author, idea }).catch((error) => logger.error('email', error))
   return true
 })
