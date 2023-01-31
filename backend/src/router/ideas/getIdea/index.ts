@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { z } from 'zod'
-import { trpc } from '../../../lib/trpc'
+import { trpcLoggedProcedure } from '../../../lib/trpc'
 
-export const getIdea = trpc.procedure
+export const getIdea = trpcLoggedProcedure
   .input(
     z.object({
       ideaNick: z.string(),

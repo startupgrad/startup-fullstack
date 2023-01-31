@@ -1,10 +1,10 @@
 import { sendIdeaBlockedEmail } from '../../../lib/emails'
 import { logger } from '../../../lib/logger'
-import { trpc } from '../../../lib/trpc'
+import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { canBlockIdeas } from '../../../utils/can'
 import { zBlockIdeaInput } from './input'
 
-export const blockIdea = trpc.procedure.input(zBlockIdeaInput).mutation(async ({ ctx, input }) => {
+export const blockIdea = trpcLoggedProcedure.input(zBlockIdeaInput).mutation(async ({ ctx, input }) => {
   const { ideaId } = input
   if (!canBlockIdeas(ctx.me)) {
     throw new Error('PERMISSION_DENIED')

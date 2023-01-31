@@ -1,8 +1,8 @@
 import _ from 'lodash'
-import { trpc } from '../../../lib/trpc'
+import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { zGetIdeasInput } from './input'
 
-export const getIdeas = trpc.procedure.input(zGetIdeasInput).query(async ({ ctx, input }) => {
+export const getIdeas = trpcLoggedProcedure.input(zGetIdeasInput).query(async ({ ctx, input }) => {
   const rawIdeas = await ctx.prisma.idea.findMany({
     select: {
       id: true,

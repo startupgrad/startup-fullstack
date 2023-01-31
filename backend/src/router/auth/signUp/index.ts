@@ -1,11 +1,11 @@
 import { sendWelcomeEmail } from '../../../lib/emails'
 import { logger } from '../../../lib/logger'
-import { trpc } from '../../../lib/trpc'
+import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
 import { signJWT } from '../../../utils/signJWT'
 import { zSignUpInput } from './input'
 
-export const signUp = trpc.procedure.input(zSignUpInput).mutation(async ({ ctx, input }) => {
+export const signUp = trpcLoggedProcedure.input(zSignUpInput).mutation(async ({ ctx, input }) => {
   const exUserWithNick = await ctx.prisma.user.findUnique({
     where: {
       nick: input.nick,
