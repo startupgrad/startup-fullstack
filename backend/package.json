@@ -21,6 +21,7 @@
     "@ideanick/shared": "workspace:*",
     "@ideanick/webapp": "workspace:*",
     "@prisma/client": "^4.8.0",
+    "@sentry/node": "^7.35.0",
     "@trpc/server": "^10.7.0",
     "cors": "^2.8.5",
     "cron": "^2.2.0",

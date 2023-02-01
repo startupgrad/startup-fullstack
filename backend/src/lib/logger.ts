@@ -1,4 +1,5 @@
 import { EOL } from 'os'
+import { TRPCError } from '@trpc/server'
 import debug from 'debug'
 import _ from 'lodash'
 import pc from 'picocolors'
@@ -8,6 +9,8 @@ import winston from 'winston'
 import * as yaml from 'yaml'
 import { hideSensetiveData } from '../utils/hideSensetiveData'
 import { env } from './env'
+import { ExpectedError } from './error'
+import { sentryCaptureException } from './sentry'
 
 const winstonLogger = winston.createLogger({
   level: 'debug',
@@ -68,6 +71,11 @@ export const logger = {
     winstonLogger.info(message, { logType, ...hideSensetiveData(meta) })
   },
   error: (logType: string, error: any, meta?: Record<string, any>) => {
+    const isNativeExpectedError = error instanceof ExpectedError
+    const isTrpcExpectedError = error instanceof TRPCError && error.cause instanceof ExpectedError
+    if (!isNativeExpectedError && !isTrpcExpectedError) {
+      sentryCaptureException(error)
+    }
     if (!debug.enabled(`ideanick:${logType}`)) {
       return
     }
