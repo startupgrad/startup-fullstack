@@ -7,12 +7,15 @@ import { AppContext } from './ctx'
 import { ExpectedError } from './error'
 import { logger } from './logger'
 
+export const getTrpcContext = (appContext: AppContext, me?: User) => ({
+  ...appContext,
+  me: me || null,
+})
+
 const getCreateTrpcContext =
   (appContext: AppContext) =>
-  ({ req }: trpcExpress.CreateExpressContextOptions) => ({
-    ...appContext,
-    me: (req as never as { user: User | undefined }).user || null,
-  })
+  ({ req }: trpcExpress.CreateExpressContextOptions) =>
+    getTrpcContext(appContext, (req as never as { user: User | undefined }).user)
 
 type TrpcContext = inferAsyncReturnType<ReturnType<typeof getCreateTrpcContext>>
 
