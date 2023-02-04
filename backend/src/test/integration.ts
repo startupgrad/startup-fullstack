@@ -2,9 +2,14 @@ import { Idea, User } from '@prisma/client'
 import _ from 'lodash'
 import { DateTime } from 'luxon'
 import { createAppContext } from '../lib/ctx'
+import { env } from '../lib/env'
 import { getTrpcContext } from '../lib/trpc'
 import { trpcRouter } from '../router'
 import { getPasswordHash } from '../utils/getPasswordHash'
+
+if (env.NODE_ENV !== 'test') {
+  throw new Error('Run integration tests only with NODE_ENV=test')
+}
 
 export const appContext = createAppContext()
 

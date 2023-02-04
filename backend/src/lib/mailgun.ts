@@ -4,7 +4,7 @@ import Mailgun from 'mailgun.js'
 import { env } from './env'
 
 const getMailgunClient = _.memoize(() => {
-  if (!env.MAILGUN_API_KEY) {
+  if (!env.MAILGUN_API_KEY || env.NODE_ENV === 'test') {
     return {
       messages: {
         create: async () => null,

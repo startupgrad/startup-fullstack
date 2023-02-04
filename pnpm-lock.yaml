@@ -7,6 +7,7 @@ importers:
       '@types/jest': ^29.4.0
       concurrently: ^7.6.0
       copyfiles: ^2.4.1
+      cross-env: ^7.0.3
       eslint: ^8.31.0
       eslint-config-prettier: ^8.5.0
       eslint-config-react-app: ^7.0.1
@@ -27,6 +28,7 @@ importers:
       '@types/jest': 29.4.0
       concurrently: 7.6.0
       copyfiles: 2.4.1
+      cross-env: 7.0.3
       eslint: 8.31.0
       eslint-config-prettier: 8.6.0_eslint@8.31.0
       eslint-config-react-app: 7.0.1_ng7q2klrpfl7s3ql7zkgx5sbhu
@@ -3809,6 +3811,14 @@ packages:
     dependencies:
       luxon: 3.2.1
     dev: false
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
