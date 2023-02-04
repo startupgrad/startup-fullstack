@@ -17,7 +17,7 @@
     "pgc": "prisma generate",
     "pmd": "prisma migrate dev",
     "pmt": "dotenv -e .env.test prisma migrate deploy",
-    "types": "tsc --noEmit --project ./tsconfig.json",
+    "types": "tsc --noEmit --project ./tsconfig.build.json",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache .",
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'",
     "prepare": "pnpm pgc && ts-patch install -s"

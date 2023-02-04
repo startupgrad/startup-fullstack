@@ -1,3 +1,4 @@
+import { omit } from '@ideanick/shared/src/omit'
 import { Idea, User } from '@prisma/client'
 import _ from 'lodash'
 import { DateTime } from 'luxon'
@@ -49,7 +50,7 @@ export const createUser = async ({ user = {}, number = 1 }: { user?: Partial<Use
       nick: `user${number}`,
       email: `user${number}@example.com`,
       password: getPasswordHash(user.password || '1234'),
-      ..._.omit(user, ['password']),
+      ...omit(user, ['password']),
     },
   })
 }

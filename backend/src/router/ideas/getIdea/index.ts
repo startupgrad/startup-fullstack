@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { omit } from '@ideanick/shared/src/omit'
 import { z } from 'zod'
 import { ExpectedError } from '../../../lib/error'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
@@ -42,6 +42,6 @@ export const getIdea = trpcLoggedProcedure
     }
     const isLikedByMe = !!rawIdea?.likes.length
     const likesCount = rawIdea?._count.likes || 0
-    const idea = rawIdea && { ..._.omit(rawIdea, ['likes', '_count']), isLikedByMe, likesCount }
+    const idea = rawIdea && { ...omit(rawIdea, ['likes', '_count']), isLikedByMe, likesCount }
     return { idea }
   })

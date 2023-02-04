@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { omit } from '@ideanick/shared/src/omit'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { zGetIdeasInput } from './input'
 
@@ -54,7 +54,7 @@ export const getIdeas = trpcLoggedProcedure.input(zGetIdeasInput).query(async ({
   const nextCursor = nextIdea?.createdAt
   const rawIdeasExceptNext = rawIdeas.slice(0, input.limit)
   const ideasExceptNext = rawIdeasExceptNext.map((idea) => ({
-    ..._.omit(idea, ['_count']),
+    ...omit(idea, ['_count']),
     likesCount: idea._count.likes,
   }))
 
