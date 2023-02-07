@@ -5,17 +5,29 @@ import {
 } from '@ideanick/shared/src/cloudinary'
 import cn from 'classnames'
 import { FormikProps } from 'formik'
-import { useRef, useState } from 'react'
+import memoize from 'lodash/memoize'
+import { useCallback, useRef, useState } from 'react'
 import { trpc } from '../../lib/trpc'
 import { Buttons, Button } from '../Button'
 import css from './styles.module.scss'
 
-const useUploadToCloudinary = (type: CloudinaryUploadTypeName) => {
+export const useUploadToCloudinary = (type: CloudinaryUploadTypeName) => {
   const prepareCloudinaryUpload = trpc.prepareCloudinaryUpload.useMutation()
 
-  const uploadToCloudinary = async (file: File) => {
-    const { preparedData } = await prepareCloudinaryUpload.mutateAsync({ type })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getPreparedData = useCallback(
+    memoize(
+      async () => {
+        const { preparedData } = await prepareCloudinaryUpload.mutateAsync({ type })
+        return preparedData
+      },
+      () => JSON.stringify({ type, minutes: new Date().getMinutes() })
+    ),
+    [type]
+  )
 
+  const uploadToCloudinary = async (file: File) => {
+    const preparedData = await getPreparedData()
     const formData = new FormData()
     formData.append('file', file)
     formData.append('timestamp', preparedData.timestamp)

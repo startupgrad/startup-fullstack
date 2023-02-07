@@ -6,4 +6,5 @@ export const zCreateIdeaInput = z.object({
   nick: zNickRequired,
   description: zStringRequired,
   text: zStringMin(100),
+  images: z.array(zStringRequired),
 })

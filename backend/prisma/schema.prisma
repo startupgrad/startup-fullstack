@@ -32,6 +32,7 @@ model Idea {
   name        String
   description String
   text        String
+  images      String[]   @default([])
   createdAt   DateTime   @unique @default(now())
   author      User       @relation(fields: [authorId], references: [id])
   authorId    String
