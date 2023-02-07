@@ -1,5 +1,6 @@
 import type { TrpcRouterOutput } from '@ideanick/backend/src/router'
 import { canBlockIdeas, canEditIdea } from '@ideanick/backend/src/utils/can'
+import { getAvatarUrl } from '@ideanick/shared/src/cloudinary'
 import { useParams } from 'react-router-dom'
 import { Alert } from '../../../components/Alert'
 import { LinkButton, Button } from '../../../components/Button'
@@ -83,8 +84,13 @@ export const ViewIdeaPage = withPageWrapper({
 })(({ idea, me }) => (
   <Segment title={idea.name} description={idea.description}>
     <div className={css.author}>
-      Author: {idea.author.nick}
-      {idea.author.name ? ` (${idea.author.name})` : ''}
+      <img className={css.avatar} alt="" src={getAvatarUrl(idea.author.avatar, 'small')} />
+      <div className={css.name}>
+        Author:
+        <br />
+        {idea.author.nick}
+        {idea.author.name ? ` (${idea.author.name})` : ''}
+      </div>
     </div>
     <div className={css.text} dangerouslySetInnerHTML={{ __html: idea.text }} />
     <div className={css.likes}>

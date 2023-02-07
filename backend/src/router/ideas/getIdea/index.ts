@@ -20,6 +20,7 @@ export const getIdea = trpcLoggedProcedure
             id: true,
             nick: true,
             name: true,
+            avatar: true,
           },
         },
         likes: {

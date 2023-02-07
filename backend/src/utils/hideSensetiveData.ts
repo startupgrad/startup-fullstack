@@ -9,7 +9,19 @@ export const hideSensetiveData = (meta?: Record<string, any>) => {
     const valueHere = value?.toObject ? value.toObject() : value
     if (_.isObject(valueHere)) {
       result[key] = hideSensetiveData(valueHere)
-    } else if (['email', 'password', 'newPassword', 'oldPassword', 'token', 'text', 'description'].includes(key)) {
+    } else if (
+      [
+        'email',
+        'password',
+        'newPassword',
+        'oldPassword',
+        'token',
+        'text',
+        'description',
+        'apiKey',
+        'signature',
+      ].includes(key)
+    ) {
       result[key] = '🙈'
     } else {
       result[key] = valueHere
