@@ -15,5 +15,5 @@ export const signIn = trpcLoggedProcedure.input(zSignInInput).mutation(async ({ 
     throw new ExpectedError('Wrong nick or password')
   }
   const token = signJWT(user.id)
-  return { token }
+  return { token, userId: user.id }
 })

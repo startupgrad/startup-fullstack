@@ -10,6 +10,7 @@ import { FormItems } from '../../../components/FormItems'
 import { Icon } from '../../../components/Icon'
 import { Segment } from '../../../components/Segment'
 import { useForm } from '../../../lib/form'
+import { mixpanelSetIdeaLike } from '../../../lib/mixpanel'
 import { withPageWrapper } from '../../../lib/pageWrapper'
 import { ViewIdeaRouteParams, getEditIdeaRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
@@ -41,7 +42,9 @@ const LikeButton: React.FC<{ idea: NonNullable<TrpcRouterOutput['getIdea']['idea
       className={css.likeButton}
       onClick={(e) => {
         e.preventDefault()
-        void setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe })
+        void setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe }).then(({ idea }) => {
+          mixpanelSetIdeaLike(idea)
+        })
       }}
     >
       <Icon size={32} className={css.likeIcon} name={idea.isLikedByMe ? 'likeFilled' : 'likeEmpty'} />

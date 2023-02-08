@@ -167,6 +167,7 @@ importers:
       '@trpc/server': ^10.7.0
       '@types/js-cookie': ^3.0.2
       '@types/lodash': ^4.14.191
+      '@types/mixpanel-browser': ^2.38.1
       '@types/react': ^18.0.26
       '@types/react-dom': ^18.0.9
       '@types/react-image-gallery': ^1.2.0
@@ -177,6 +178,7 @@ importers:
       include-media: ^1.4.10
       js-cookie: ^3.0.1
       lodash: ^4.17.21
+      mixpanel-browser: ^2.45.0
       nanostores: ^0.7.1
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -208,6 +210,7 @@ importers:
       formik: 2.2.9_react@18.2.0
       js-cookie: 3.0.1
       lodash: 4.17.21
+      mixpanel-browser: 2.45.0
       nanostores: 0.7.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -223,6 +226,7 @@ importers:
       '@sentry/vite-plugin': 0.4.0
       '@types/js-cookie': 3.0.2
       '@types/lodash': 4.14.191
+      '@types/mixpanel-browser': 2.38.1
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
       '@types/react-image-gallery': 1.2.0
@@ -3719,6 +3723,10 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /@types/mixpanel-browser/2.38.1:
+    resolution: {integrity: sha512-XzQbwgiOPsFXUQnjz3vSwcwrvJDbQ35bCiwa/1VXGrHvU1ti9+eqO1GY91DShzkEzKkkEEkxfNshS5dbBZqd7w==}
     dev: true
 
   /@types/ms/0.7.31:
@@ -7738,6 +7746,10 @@ packages:
 
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+
+  /mixpanel-browser/2.45.0:
+    resolution: {integrity: sha512-PQ1DaTk68yyYtLA0iejmzPA9iNDhT4uIZpqZjRTw7HWpYfl123fydHb2laKanaKjm8YDmrGGz3+xZ4Q6joogyg==}
+    dev: false
 
   /mjml-accordion/4.13.0:
     resolution: {integrity: sha512-E3yihZW5Oq2p+sWOcr8kWeRTROmiTYOGxB4IOxW/jTycdY07N3FX3e6vuh7Fv3rryHEUaydUQYto3ICVyctI7w==}
