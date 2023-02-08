@@ -7,4 +7,5 @@ export const zCreateIdeaInput = z.object({
   description: zStringRequired,
   text: zStringMin(100),
   images: z.array(zStringRequired),
+  certificate: z.string().nullable(),
 })

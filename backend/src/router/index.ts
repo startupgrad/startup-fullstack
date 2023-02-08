@@ -13,6 +13,7 @@ import { getIdeas } from './ideas/getIdeas'
 import { setIdeaLike } from './ideas/setIdeaLike'
 import { updateIdea } from './ideas/updateIdea'
 import { prepareCloudinaryUpload } from './upload/prepareCloudinaryUpload'
+import { prepareS3Upload } from './upload/prepareS3Upload'
 // @endindex
 
 export const trpcRouter = createTrpcRouter({
@@ -29,6 +30,7 @@ export const trpcRouter = createTrpcRouter({
   setIdeaLike,
   updateIdea,
   prepareCloudinaryUpload,
+  prepareS3Upload,
   // @endindex
 })
 

@@ -5,6 +5,7 @@ import { FormItems } from '../../../components/FormItems'
 import { Input } from '../../../components/Input'
 import { Segment } from '../../../components/Segment'
 import { Textarea } from '../../../components/Textarea'
+import { UploadToS3 } from '../../../components/UploadToS3'
 import { UploadsToCloudinary } from '../../../components/UploadsToCloudinary'
 import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
@@ -22,6 +23,7 @@ export const NewIdeaPage = withPageWrapper({
       description: '',
       text: '',
       images: [],
+      certificate: null,
     },
     validationSchema: zCreateIdeaInput,
     onSubmit: async (values) => {
@@ -40,6 +42,7 @@ export const NewIdeaPage = withPageWrapper({
           <Input label="Description" name="description" maxWidth={500} formik={formik} />
           <Textarea label="Text" name="text" formik={formik} />
           <UploadsToCloudinary label="Images" name="images" type="image" preset="preview" formik={formik} />
+          <UploadToS3 label="Certificate" name="certificate" formik={formik} />
           <Alert {...alertProps} />
           <Button {...buttonProps}>Create Idea</Button>
         </FormItems>

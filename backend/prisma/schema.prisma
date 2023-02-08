@@ -33,6 +33,7 @@ model Idea {
   description String
   text        String
   images      String[]   @default([])
+  certificate String?
   createdAt   DateTime   @unique @default(now())
   author      User       @relation(fields: [authorId], references: [id])
   authorId    String

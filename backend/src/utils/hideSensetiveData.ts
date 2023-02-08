@@ -20,6 +20,7 @@ export const hideSensetiveData = (meta?: Record<string, any>) => {
         'description',
         'apiKey',
         'signature',
+        'signedUrl',
       ].includes(key)
     ) {
       result[key] = '🙈'
