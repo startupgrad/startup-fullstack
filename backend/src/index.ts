@@ -8,6 +8,7 @@ import { applyCron } from './lib/cron'
 import { AppContext, createAppContext } from './lib/ctx'
 import { logger } from './lib/logger'
 import { applyPassportToExpressApp } from './lib/passport'
+import { applyServeWebApp } from './lib/serveWebApp'
 import { applyTrpcToExpressApp } from './lib/trpc'
 import { trpcRouter } from './router'
 import { presetDb } from './scripts/presetDb'
@@ -24,6 +25,7 @@ void (async () => {
     })
     applyPassportToExpressApp(expressApp, ctx)
     applyTrpcToExpressApp(expressApp, ctx, trpcRouter)
+    applyServeWebApp(expressApp)
     applyCron(ctx)
     expressApp.use((error: unknown, req: express.Request, res: express.Response, next: express.NextFunction) => {
       logger.error('express', error)
