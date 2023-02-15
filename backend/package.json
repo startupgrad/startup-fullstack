@@ -17,6 +17,7 @@
     "pgc": "prisma generate",
     "pmd": "prisma migrate dev",
     "pmt": "dotenv -e .env.test prisma migrate deploy",
+    "pmp": "dotenv -e .env.production prisma migrate deploy",
     "types": "tsc --noEmit --project ./tsconfig.build.json",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache .",
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'",
@@ -47,6 +48,7 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "picocolors": "^1.0.0",
+    "prisma": "^4.10.1",
     "randomstring": "^1.2.3",
     "serialize-error": "^8.1.0",
     "triple-beam": "^1.3.0",
@@ -67,8 +69,6 @@
     "@types/passport-jwt": "^3.0.8",
     "@types/randomstring": "^1.1.8",
     "@types/triple-beam": "^1.3.2",
-    "dotenv-cli": "^7.0.0",
-    "mjml": "^4.13.0",
-    "prisma": "^4.8.0"
+    "mjml": "^4.13.0"
   }
 }
