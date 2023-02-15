@@ -14,4 +14,4 @@ export const zEnv = z.object({
 })
 
 // eslint-disable-next-line node/no-process-env
-export const env = zEnv.parse(process.env)
+export const env = zEnv.parse((window as any).webappEnvFromBackend || process.env)
